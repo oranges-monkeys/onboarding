@@ -1,0 +1,7 @@
+{
+  "precision": 2,
+  "temperature": {
+    "defaultFrom": "C",
+    "defaultTo": "F"
+  }
+}
