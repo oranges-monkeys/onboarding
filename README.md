@@ -81,22 +81,14 @@ Verify that SpecStory is logging correctly by running a short AI interaction and
 
 ## 5) Install Git Hooks
 
-To help you avoid accidentally committing AI indicators, we've created git hooks that automatically block commits and pushes containing AI-related patterns. These hooks scan your commit messages and code for references to AI tools, model names, and common AI-generated phrases.
+To help you avoid accidentally committing AI indicators, we've created git hooks that automatically block commits and pushes containing AI references. These hooks scan your commit messages and code for references to AI tools, model names, and common AI-generated phrases.
 
 ### Installation
 
-The hooks are already active in this repository. To install them in other repositories (like your assigned project):
+To install the hooks, run the provided script from the root of your repository. See `git-hooks-template/README.md` for more details.
 
-1. Navigate to the repository where you want the hooks:
-
-   ```bash
-   cd /path/to/your/repo
-   ```
-
-2. Run the installation script from this onboarding directory:
-   ```bash
-   /path/to/onboarding/git-hooks-template/install-hooks.sh
-   ```
+- Install: `bash git-hooks-template/install-hooks.sh`
+- Reference: `git-hooks-template/README.md`
 
 The installer will activate three hooks:
 
@@ -104,13 +96,11 @@ The installer will activate three hooks:
 - **pre-commit** - Blocks AI indicators in staged file contents
 - **pre-push** - Final safety check before pushing to remote
 
-For more details, see `git-hooks-template/README.md`.
-
 ## 6) Practice Tasks
 
 We’ve set up a small project in `playground` that provides a more detailed guided tour of both Claude Code and Cursor. The project is a simple unit-conversion toolkit (temperature, distance, weight) with a CLI, dispatcher, and test suite designed specifically for experimentation.
 
-### Setup
+### Set Up
 
 Start by forking this repository using your anonymous GitHub account and cloning your fork locally. While working in this project, please keep both the screen recorder and SpecStory running at all times.
 
@@ -128,8 +118,8 @@ The git hooks will catch common markers, but please double-check your changes be
 
 Once you have completed the practice tasks, please submit the [onboarding form] (https://forms.gle/SLXdJk3SbjHCYnpd9) with the following artifacts:
 
-- A zipped copy of your `.specstory folder` from this repo
-- A zipped copy of the `/data` folder from your screen recorder directory
+- A zipped copy of your `.specstory folder` from this repo.
+- A zipped copy of the `/data` folder from your screen recorder directory.
 - A link to your forked repository with all changes committed and pushed.
 
 Once we receive your submission, we’ll know you’re ready for the main study and follow up with next steps. Thank you for your participation!

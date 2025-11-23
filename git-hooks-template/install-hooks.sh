@@ -25,10 +25,10 @@ mkdir -p "$HOOKS_DIR"
 echo "Installing AI-blocking git hooks..."
 
 for hook in commit-msg pre-commit pre-push; do
-  if [[ -f "$HOOKS_DIR/$hook" ]]; then
-    echo "  ⚠ Warning: $hook already exists, creating backup as $hook.backup"
-    mv "$HOOKS_DIR/$hook" "$HOOKS_DIR/$hook.backup"
-  fi
+  # if [[ -f "$HOOKS_DIR/$hook" ]]; then
+  #   # echo "  Warning: $hook already exists"
+  #   # mv "$HOOKS_DIR/$hook" "$HOOKS_DIR/$hook.backup"
+  # fi
 
   cp "$SCRIPT_DIR/$hook" "$HOOKS_DIR/$hook"
   chmod +x "$HOOKS_DIR/$hook"
@@ -36,7 +36,7 @@ for hook in commit-msg pre-commit pre-push; do
 done
 
 echo ""
-echo "✓ Successfully installed AI-blocking hooks!"
+echo "Successfully installed git hooks!"
 echo ""
 echo "The following hooks are now active:"
 echo "  • commit-msg  - Blocks AI indicators in commit messages"
