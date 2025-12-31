@@ -12,18 +12,50 @@ const defaults = JSON.parse(
 );
 
 export function convert(type, value, from, to) {
+  // Validate input value
+  if (typeof value === "string") {
+    // Try to convert string to number
+    const numValue = Number(value);
+    if (isNaN(numValue)) {
+      throw new Error("Invalid number: " + value);
+    }
+    value = numValue;
+  }
+  
+  // Check for NaN
+  if (isNaN(value)) {
+    throw new Error("Invalid number: NaN");
+  }
+  
+  // Check for non-numeric types
+  if (typeof value !== "number") {
+    throw new Error("Invalid number: " + value);
+  }
+  
+  // Validate conversion type
+  if (type !== "temperature" && type !== "distance" && type !== "weight") {
+    throw new Error("Unknown conversion type: " + type);
+  }
+  
+  let result;
   switch (type) {
     case "temperature":
-      return temperature.convertTemperature(
+      result = temperature.convertTemperature(
         value,
         from || defaults.temperature.defaultFrom,
         to || defaults.temperature.defaultTo
       );
+      break;
     case "distance":
-      return distance.convertDistance(value, from, to);
+      result = distance.convertDistance(value, from, to);
+      break;
     case "weight":
-      return weight.convertWeight(value, from, to);
-    default:
-      throw new Error("Unknown type " + type);
+      result = weight.convertWeight(value, from, to);
+      break;
   }
+  
+  // Apply precision rounding
+  const precision = defaults.precision || 2;
+  const factor = Math.pow(10, precision);
+  return Math.round(result * factor) / factor;
 }
